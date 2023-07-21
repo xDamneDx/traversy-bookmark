@@ -18,7 +18,15 @@ function onTabsClick(e) {
   panels.forEach((panel) => panel.classList.add("hidden"));
 
   // Activate a new tab and panel based on the target:
-  e.target.classList.add("border-softRed", "border-b-4");
+  let target;
+
+  if (!e.target.children.length) {
+    target = e.target;
+  } else {
+    target = e.target.children[0];
+  }
+
+  target.classList.add("border-softRed", "border-b-4");
   document
     .getElementById("panels")
     .getElementsByClassName(e.target.getAttribute("data-target"))[0]
